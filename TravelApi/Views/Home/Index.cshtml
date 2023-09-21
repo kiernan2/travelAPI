@@ -1,0 +1,40 @@
+@using TravelApi.Models
+
+@model List<TravelApi.Models.Review>
+
+<p>@Html.ActionLink("Locations", "Index", "Locations")</p>
+<p>@Html.ActionLink("Reviews", "Index", "Reviews")</p>
+
+<hr />
+
+<p>@Html.ActionLink("Create an account", "Index", "Account")</p>
+
+<h2>Locations</h2>
+@if(Model.Any())
+{
+  <ul>
+    @foreach(Location location in Model)
+    {
+      <li>@location.LocationName</li>
+    }
+  </ul>
+}
+else
+{
+  <p>No locations added</p>
+}
+
+<h2>Reviews</h2>
+@if(Model.Any())
+{
+  <ul>
+    @foreach(Review review in ViewBag.ReviewList)
+    {
+      <li>@review.Author</li>
+    }
+  </ul>
+}
+else
+{
+  <p>No reviews added</p>
+}

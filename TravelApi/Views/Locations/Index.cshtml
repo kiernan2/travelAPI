@@ -1,0 +1,20 @@
+@using TravelApi.Models
+
+@model List<TravelApi.Models.Location>
+  <h1>Location</h1>
+
+  @if(Model.Any())
+  {
+  <ui>
+    @foreach(Location location in Model)
+    {
+      <li>@Html.ActionLink($"{location.LocationName}", "Details", new {id = location.LocationId})</li>
+    }
+  </ui>
+  }
+  else
+  {
+    <p>no locations</p>
+  }
+<p>@Html.ActionLink("Add Book", "Create")</p>
+<p>@Html.ActionLink("Back", "Index", "Home")</p>

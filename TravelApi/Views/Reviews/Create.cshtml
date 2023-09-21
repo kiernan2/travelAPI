@@ -1,0 +1,20 @@
+<h1>Add a Review</h1>
+
+@model TravelApi.Models.Review
+
+<h4>Add a new Review</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Author)
+  @Html.TextBoxFor(model => model.Author)
+
+  @Html.LabelFor(model => model.ReviewText)
+  @Html.TextBoxFor(model => model.ReviewText)
+
+  <label for="Rating">Rating</label>
+  <input id="Rating" name="Rating" type="number">
+
+  <input type="submit" value="Add new Review">
+}
+
+<p>@Html.ActionLink("Show all Reviews", "Index")</p>

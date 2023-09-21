@@ -1,0 +1,17 @@
+<h1>Add a location</h1>
+
+@model TravelApi.Models.Location
+
+<h4>Add a new location</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.LocationName)
+  @Html.TextBoxFor(model => model.LocationName)
+
+  @Html.LabelFor(model => model.Country)
+  @Html.TextBoxFor(model => model.Country)
+
+  <input type="submit" value="Add new Location">
+}
+
+<p>@Html.ActionLink("Show all Locations", "Index")</p>

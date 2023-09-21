@@ -1,0 +1,28 @@
+@using TravelApi.Models
+@model TravelApi.Models.Review
+
+<h1>Review Details Page</h1>
+
+<p>@Model.Author</p>
+
+@if(Model.JoinEntities.Any())
+{
+  <h2>Reviews</h2>
+  <ul>
+    @foreach(LocationReview join in Model.JoinEntities)
+    {
+      <li>@join.Review.Author</li>
+      @using (Html.BeginForm("DeleteReview", "Reviews"))
+      {
+        @Html.Hidden("joinId", @join.LocationReviewId)
+        <input type="submit" value="Delete">
+      }
+    }
+  </ul>
+}
+else
+{
+  <p>No Locations Yet</p>
+}
+
+<p>@Html.ActionLink("Back", "Index")</p>

@@ -4,7 +4,6 @@ namespace TravelApi.Models
 {
   public class Review
   {
-    [Required]
     public int ReviewId { get; set; }
     [Required]
     [StringLength(20)]
