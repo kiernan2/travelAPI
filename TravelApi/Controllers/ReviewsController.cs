@@ -68,9 +68,14 @@ namespace TravelApi.Controllers
 
     // PUT: api/Reviews/5
     [HttpPut("{id}")]
-    public async Task<ActionResult> Put(int id, Review review)
+    public async Task<ActionResult> Put(int id, string user ,Review review)
     {
       if (id != review.ReviewId)
+      {
+        return BadRequest();
+      }
+
+      if (user != review.Author)
       {
         return BadRequest();
       }
@@ -102,12 +107,17 @@ namespace TravelApi.Controllers
 
     // DELETE: api/Reviews/5
     [HttpDelete("{id}")]
-    public async Task<ActionResult> DeleteReview(int id)
+    public async Task<ActionResult> DeleteReview(int id, string user)
     {
       Review review = await _db.Reviews.FindAsync(id);
       if (review == null)
       {
         return NotFound();
+      }
+
+      if (user != review.Author)
+      {
+        return BadRequest();
       }
 
       _db.Reviews.Remove(review);
